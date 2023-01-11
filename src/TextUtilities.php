@@ -184,7 +184,7 @@ class TextUtilities
         $tokens = explode(" ", $line);
         $newTokens = [];
         foreach ($tokens as $token) {
-            if (mb_strlen($token) > $maxLength) {
+            if (mb_strlen(str_replace($this->config->getSequencesToIgnore(), '', $token)) > $maxLength) {
                 $tokensWithMaxLength = str_split($token, $maxLength);
                 $newTokens = array_merge($newTokens, $tokensWithMaxLength);
             } else {
